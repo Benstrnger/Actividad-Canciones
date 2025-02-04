@@ -25,6 +25,7 @@
 					<th>Album</th>
 					<th>Genero</th>
 					<th>Idioma</th>
+					<th>Editar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,6 +35,7 @@
 					<td>${cancion.album}</td>
 					<td>${cancion.genero}</td>
 					<td>${cancion.idioma}</td>
+					<td><a href="/canciones/formulario/editar/${cancion.id}">Editar Info</a></td>
 				</tr>
 			</tbody>
 		</table>
