@@ -24,23 +24,23 @@ public class Cancion {
 	private Long id;
 	
 	@NotNull
-	@Size(min=2, max=100, message="El titulo debe tener al menos 2 caracteres")
+	@Size(min=5, max=100, message="El titulo debe tener al menos 2 caracteres")
 	private String titulo;
 	
 	@NotNull
-	@Size(min=2, max=100, message="El nombre del artista debe tener al menos 2 caracteres")
+	@Size(min=3, max=100, message="El nombre del artista debe tener al menos 2 caracteres")
 	private String artista;
 	
 	@NotNull
-	@Size(min=2, max=100, message="El nombre del album debe tener al menos 2 caracteres")
+	@Size(min=3, max=100, message="El nombre del album debe tener al menos 2 caracteres")
 	private String album;
 	
 	@NotNull
-	@Size(min=2, max=100, message="El genero debe tener al menos 2 caracteres")
+	@Size(min=3, max=100, message="El genero debe tener al menos 2 caracteres")
 	private String genero;
 	
 	@NotNull
-	@Size(min=2, max=100, message="El idioma debe tener al menos 2 caracteres")
+	@Size(min=3, max=100, message="El idioma debe tener al menos 2 caracteres")
 	private String idioma;
 	
 	@Column(updatable=false) // Que la columna no puede editarse
