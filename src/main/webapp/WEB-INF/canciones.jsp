@@ -26,12 +26,12 @@
 	 				<tr>
 	 					<td>${cancion.titulo}</td>
 	 					<td>${cancion.artista}</td>
-	 					<td><a href="canciones/detalle/${cancion.id}" class="btn btn-danger">Detalle</a></td>
+	 					<td><a href="canciones/detalle/${cancion.id}" class="btn btn-danger m-1">Detalle</a></td>
 	 				</tr>
 	 			</c:forEach>
 	 		</tbody>
 		</table>
-		<a href="/canciones/formulario/agregar" class="btn btn-success">Agregar Cancion</a>
+		<a href="/canciones/formulario/agregar" class="btn btn-success m-1">Agregar Cancion</a>
 	</div>
 </body>
 </html>

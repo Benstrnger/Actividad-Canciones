@@ -47,10 +47,10 @@
 					placeholder="Ingresa el idioma de la cancion..." />
 				<form:errors path="idioma" class="text-danger" />
 			</div>
-			<input type="submit" class="btn btn-info mt-3"
+			<input type="submit" class="btn btn-info mt-3 m-1"
 				value="Guardar Cancion">
 		</form:form>
-		<a href="/canciones" class="btn btn-danger">Volver a lista de canciones</a>
+		<a href="/canciones" class="btn btn-danger m-1">Volver a lista de canciones</a>
 	</div>
 </body>
 </html>

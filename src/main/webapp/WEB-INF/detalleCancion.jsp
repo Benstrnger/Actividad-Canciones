@@ -35,7 +35,12 @@
 					<td>${cancion.album}</td>
 					<td>${cancion.genero}</td>
 					<td>${cancion.idioma}</td>
-					<td><a href="/canciones/formulario/editar/${cancion.id}">Editar Info</a></td>
+					<td><a href="/canciones/formulario/editar/${cancion.id}" class="btn btn-info m-1">Editar Info</a>
+						<form action="/canciones/eliminar/${cancion.id}" method="POST">
+							<input type="hidden" name="_method" value="DELETE"/>
+							<input type="submit" value="Eliminar" class="btn btn-danger m-1"/>
+						</form>
+						</td>
 				</tr>
 			</tbody>
 		</table>
