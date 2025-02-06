@@ -31,7 +31,7 @@
 			<tbody>
 				<tr>
 					<td>${cancion.titulo}</td>
-					<td>${cancion.artista}</td>
+					<td>${cancion.artista.nombre}</td>
 					<td>${cancion.album}</td>
 					<td>${cancion.genero}</td>
 					<td>${cancion.idioma}</td>

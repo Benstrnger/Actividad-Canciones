@@ -27,8 +27,11 @@
 			</div>
 			<div>
 				<form:label path="artista">Artista:</form:label>
-				<form:input class="form-control" path="artista"
-					placeholder="Ingresa el Nombre del Artista..." value="${cancion.artista}" />
+				<form:select class="form-select" path="artista">
+					<c:forEach items="${artistas}" var="artista">
+						<form:option value="${artista.id}">${artista.nombre}</form:option>	
+					</c:forEach>
+				</form:select>
 				<form:errors path="artista" class="text-danger" />
 			</div>
 			<div>

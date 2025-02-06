@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.benjamin.modelos.Artista;
 import com.benjamin.modelos.Cancion;
+import com.benjamin.servicios.ServicioArtistas;
 import com.benjamin.servicios.ServicioCanciones;
 
 import jakarta.validation.Valid;
@@ -25,6 +27,9 @@ public class ControladorCanciones {
 	
 	@Autowired
 	private ServicioCanciones serv;
+	
+	@Autowired
+	private ServicioArtistas servArtist;
 	
 	@GetMapping("")
 	public String desplegarCanciones(Model model) {
@@ -48,16 +53,23 @@ public class ControladorCanciones {
 	
 	//Ruta 1
 	@GetMapping("/formulario/agregar")
-	public String formularioAgregarCancion(@ModelAttribute("cancion") Cancion newSong) {
+	public String formularioAgregarCancion(@ModelAttribute("cancion") Cancion newSong, Model model) {
+		
+		List<Artista> artistas = servArtist.obtenerTodosLosArtistas();
+		model.addAttribute("artistas", artistas);
+		
 		return "agregarCancion.jsp";
 	}
 	
 	//Ruta 2
 	@PostMapping("/procesa/agregar")
 	public String procesarAgregarCancion(@Valid @ModelAttribute("cancion") Cancion newSong,
-										 BindingResult result) {
+										 BindingResult result,
+										 Model model) {
 		
 		if(result.hasErrors()) {
+			List<Artista> artistas = servArtist.obtenerTodosLosArtistas();
+			model.addAttribute("artistas", artistas);
 			return "agregarCancion.jsp";
 		} else {
 			serv.agregarCancion(newSong);
@@ -72,6 +84,9 @@ public class ControladorCanciones {
 		Cancion cancionActual = this.serv.obtenerCancionPorId(id);
 		model.addAttribute("cancion", cancionActual);
 		
+		List<Artista> artistas = servArtist.obtenerTodosLosArtistas();
+		model.addAttribute("artistas", artistas);
+		
 		return "editarCancion.jsp";
 	}
 	
@@ -79,8 +94,10 @@ public class ControladorCanciones {
 	@PutMapping("/procesa/editar/{idCancion}")
 	public String procesarEditarCancion(@Valid @ModelAttribute("cancion") Cancion EditSong,
 										BindingResult result,
-										@PathVariable("idCancion") Long id) {
+										@PathVariable("idCancion") Long id, Model model) {
 		if(result.hasErrors()) {
+			List<Artista> artistas = servArtist.obtenerTodosLosArtistas();
+			model.addAttribute("artistas", artistas);
 			return "editarCancion.jsp";
 		}
 		
@@ -96,6 +113,8 @@ public class ControladorCanciones {
 		
 		return "redirect:/canciones";
 	}
+	
+	
 }
 
 

@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -24,12 +26,12 @@ public class Cancion {
 	private Long id;
 	
 	@NotNull
-	@Size(min=5, max=100, message="El titulo debe tener al menos 2 caracteres")
+	@Size(min=2, max=100, message="El titulo debe tener al menos 2 caracteres")
 	private String titulo;
 	
-	@NotNull
-	@Size(min=3, max=100, message="El nombre del artista debe tener al menos 2 caracteres")
-	private String artista;
+	@ManyToOne
+	@JoinColumn(name = "id_artista")
+	private Artista artista;
 	
 	@NotNull
 	@Size(min=3, max=100, message="El nombre del album debe tener al menos 2 caracteres")
@@ -69,11 +71,11 @@ public class Cancion {
 		this.titulo = titulo;
 	}
 
-	public String getArtista() {
+	public Artista getArtista() {
 		return artista;
 	}
 
-	public void setArtista(String artista) {
+	public void setArtista(Artista artista) {
 		this.artista = artista;
 	}
 
